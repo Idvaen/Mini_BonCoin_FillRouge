@@ -35,7 +35,7 @@ class Routeur
                 }
                 elseif ($_GET['action'] == 'annonces') {
 
-                        $this->ctrlAnnonce;
+                        // $this->ctrlAnnonce;
                     // else
                         // throw new Exception("Identifiant d'annonce non valide");
 
