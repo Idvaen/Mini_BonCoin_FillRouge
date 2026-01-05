@@ -1,6 +1,6 @@
 <?php
 
-require_once 'ViewException.class.php';
+require_once '../src/Views/ViewException.php';
 class View
 {
 
@@ -9,14 +9,14 @@ class View
 
     public function __construct($action)
     {
-        $this->fichier = "View/view" . $action . ".php";
+        $this->fichier = "../src/Views/" . $action . ".php";
     }
 
     public function generer($donnees)
     {
         $contenu = $this->genererFichier($this->fichier, $donnees);
         $vue = $this->genererFichier(
-            'View/gabarit.php',
+            '../src/Views/gabarit.php',
             array('titre' => $this->titre, 'contenu' => $contenu)
         );
         echo $vue;

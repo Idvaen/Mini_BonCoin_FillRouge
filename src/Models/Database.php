@@ -23,8 +23,8 @@ abstract class Database
 
     private function getBdd()
     {
-        $param_ini = parse_ini_file("Param/param.ini", true);
-        extract($param_ini["mini_bon_coin"]);
+        $param_ini = parse_ini_file("../src/Param/param.ini", true);
+        extract($param_ini["MiniBonCoin"]);
         if ($this->bdd == null) {
             $this->bdd = new PDO(
                 "mysql:host=$DBHOST;dbname=$DBNAME;charset=utf8",

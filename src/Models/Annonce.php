@@ -1,7 +1,7 @@
 <?php
 
-require_once 'src/Models/Database.php';
-require_once 'src/Models/ModelException.php';
+require_once 'Database.php';
+require_once 'ModelException.php';
 
 class Annonce extends Database
 {

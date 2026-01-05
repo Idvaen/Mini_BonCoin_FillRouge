@@ -1,9 +1,9 @@
 <?php
 
-require "src/Controllers/AnnonceController.php";
-require "src/Controllers/HomeController.php";
-require "src/Controllers/UserController.php";
-require "src/Controllers/ControllerException.php";
+require "../src/Controllers/AnnonceController.php";
+require "../src/Controllers/HomeController.php";
+require "../src/Controllers/UserController.php";
+require "../src/Controllers/ControllerException.php";
 
 class Routeur
 {
@@ -24,12 +24,20 @@ class Routeur
     {
         try {
             if (isset($_GET['action'])) {
-                if ($_GET['action'] == 'billet') {
-                    $idBillet = intval($this->getParametre($_GET, 'id'));
-                    if ($idBillet != 0)
+                if ($_GET['action'] == 'annonce') {
+                    $idAnnonce = intval($this->getParametre($_GET, 'id'));
+                    if ($idAnnonce != 0)
                         $this->ctrlAnnonce;
                     else
-                        throw new Exception("Identifiant de billet non valide");
+                        throw new Exception("Identifiant d'annonce non valide");
+
+
+                }
+                elseif ($_GET['action'] == 'annonces') {
+
+                        $this->ctrlAnnonce;
+                    // else
+                        // throw new Exception("Identifiant d'annonce non valide");
 
 
                 }
@@ -42,7 +50,7 @@ class Routeur
     }
     private function erreur($msgErreur)
     {
-        $vue = new View("Erreur");
+        $vue = new View("page404");
         $vue->generer(array('msgErreur' => $msgErreur));
     }
     private function getParametre($tableau, $nom)
@@ -53,3 +61,5 @@ class Routeur
             throw new Exception("Paramètre '$nom' absent");
     }
 }
+
+?>

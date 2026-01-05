@@ -1,5 +1,10 @@
 <?php
 
+require_once '../src/Models/Annonce.php';
+require_once '../src/Views/annonces.php';
+require_once '../src/Views/home.php';
+require_once '../src/Views/View.php';
+
 class HomeController
 {
 
@@ -12,7 +17,7 @@ class HomeController
     public function accueil()
     {
         $annonces = $this->annonce->getAnnonces();
-        $vue = new View("Accueil");
-        $vue->generer(array('billets' => $annonces));
+        $vue = new View("home");
+        $vue->generer(array('annonces' => $annonces));
     }
 }
