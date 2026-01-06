@@ -1,16 +1,23 @@
-<?php $titre = "Mini Bon Coin"; ?>
+<?php $this->titre = "Mini Bon Coin"; ?>
 
-<?php foreach ($annonces ?? [] as $annonce):
+<?php
+foreach ($annonces ?? [] as $index => $annonce):
     ?>
     <article id="annonce">
         <a href="index.php?action=annonce&id=<?= $annonce['Id_ANNONCE'] ?>">
             <h1 class="titreAnnonce"><?= $annonce['titre'] ?></h1>
-        </a>
-        <!-- <img src="< $annonce['photo'] ?>" alt="Photo de l'annonce < $annonce['photo'] ?>" class="imageAnnonce"/><br> -->
-        <img src="../public/uploads/canape_test.jfif" alt="Photo de l'annonce canape_test.jfif" class="imageAnnonce" /><br>
-        <time><?= $annonce['date_public'] ?></time>
-        <p><?= $annonce['description'] ?></p>
-        <p><?= $annonce['prix'] ?>$</p>
+            <img src="../public/uploads/<?= in_array($annonce['photo'], $uploads) ? $annonce['photo'] : 'canape_test.jfif' ?>"
+                alt="Photo de l'annonce <?= $annonce['photo'] ?>" class="imageAnnonce" />
+        </a><br>
+        <time>Date: <?= $annonce['date_public'] ?></time>
+        <br>
+        <p>Description: <?= $annonce['description'] ?></p>
+        <p>Prix: <?= $annonce['prix'] ?>$</p>
     </article>
     <hr />
-<?php endforeach; ?>
+    <?php
+    if ($index == 7) {
+        break;
+    }
+endforeach;
+?>

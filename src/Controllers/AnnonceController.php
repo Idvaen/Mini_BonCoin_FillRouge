@@ -1,8 +1,6 @@
 <?php
 
 require_once '../src/Models/Annonce.php';
-require_once '../src/Views/annonces.php';
-require_once '../src/Views/home.php';
 require_once '../src/Views/View.php';
 
 
@@ -14,11 +12,14 @@ class AnnonceController
     {
         $this->annonce = new Annonce();
     }
-    
+
     // vue annonces.php
     public function index(): void
     {
-
+        $annonces = $this->annonce->getAnnonces();
+        $vue = new View("annonces");
+        $vue->generer(array('annonces' => $annonces));
+        $annonces->closeCursor();
     }
     // vue create.php + upload + insertion
     public function create(): void

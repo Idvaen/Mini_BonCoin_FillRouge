@@ -4,6 +4,7 @@
   padding: 0;
 }
 
+/* GABARIT */
 #logo {
   width: 75px;
   height: auto;
@@ -35,6 +36,7 @@ a {
   text-align: center;
   font-weight: bold;
 }
+
 #gabarit_titre {
   display: flex;
   flex-direction: column;
@@ -42,11 +44,21 @@ a {
   text-align: center;
   align-items: center;
 }
+
 #contenu {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+/* ANNONCE */
+#annonce a img{
+  max-width: 275px;
+}
+
+#annonce{
+  text-align: center;
 }
 
 #annonce {
