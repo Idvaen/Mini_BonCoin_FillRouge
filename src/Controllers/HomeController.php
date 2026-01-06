@@ -14,7 +14,7 @@ class HomeController
     }
 
     // vue home.php
-    public function accueil()
+    public function index()
     {
         $annonces = $this->annonce->getAnnoncesHome();
         $vue = new View("home");

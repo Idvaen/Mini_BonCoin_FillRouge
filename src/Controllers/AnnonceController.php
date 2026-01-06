@@ -16,7 +16,7 @@ class AnnonceController
     // vue annonces.php
     public function index(): void
     {
-        $annonces = $this->annonce->getAnnonces();
+        $annonces = $this->annonce->findAll();
         $vue = new View("annonces");
         $vue->generer(array('annonces' => $annonces));
         $annonces->closeCursor();
@@ -30,6 +30,8 @@ class AnnonceController
     // vue details.php
     public function show(?int $id): void
     {
-
+        $annonce = $this->annonce->findById($id);
+        $vue = new View("details");
+        $vue->generer(array('annonce' => $annonce));
     }
 }

@@ -1,6 +1,6 @@
 <?php $this->titre = "Creation - Utilisateur"; ?>
 
-<form>
+<form action="index.php?action=profil" method="post">
   <div class="form-group">
     <label for="username">Username</label>
     <input type="text" class="form-control" id="username" aria-describedby="userHelp">
@@ -16,8 +16,8 @@
     <input type="password" class="form-control" id="pwd">
   </div>
   <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="check">
-    <label class="form-check-label" for="check">Check me out</label>
+    <input type="checkbox" class="form-check-input" id="reg_check">
+    <label class="form-check-label" for="reg_check">Check me out</label>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

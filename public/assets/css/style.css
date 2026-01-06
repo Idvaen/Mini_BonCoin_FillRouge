@@ -21,6 +21,11 @@ a {
   color: black;
 }
 
+#global{
+  text-align: center;
+  justify-content: center;
+}
+
 #gabarit_titre a {
   width: 230px;
 }
@@ -71,4 +76,11 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+/* Footer */
+
+#piedPrincipal{
+  text-align: center;
+  background-color: antiquewhite;
 }
