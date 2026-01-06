@@ -27,18 +27,16 @@ class Routeur
                 if ($_GET['action'] == 'annonce') {
                     $idAnnonce = intval($this->getParametre($_GET, 'id'));
                     if ($idAnnonce != 0)
-                        $this->ctrlAnnonce;
+                        $this->ctrlAnnonce->show($idAnnonce);
                     else
                         throw new Exception("Identifiant d'annonce non valide");
-
-
                 } elseif ($_GET['action'] == 'annonces') {
                     $this->ctrlAnnonce->index();
                 } else {
-                    $this->ctrlHome->accueil();
+                    $this->ctrlHome->index();
                 }
             } else {
-                $this->ctrlHome->accueil();
+                $this->ctrlHome->index();
             }
         } catch (Exception $e) {
             $this->erreur($e->getMessage());

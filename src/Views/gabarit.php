@@ -64,7 +64,7 @@
             <?= $contenu ?>
         </div> <!-- #contenu -->
         <footer id="piedPrincipal">
-            Projet réalisé avec PHP, HTML5 et CSS @2025.
+            <p>Projet réalisé avec PHP, HTML5 et CSS @2025.</p>
         </footer>
     </div> <!-- #global -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
