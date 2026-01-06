@@ -14,10 +14,13 @@ class HomeController
     {
         $this->annonce = new Annonce();
     }
+
+    // vue home.php
     public function accueil()
     {
         $annonces = $this->annonce->getAnnonces();
         $vue = new View("home");
         $vue->generer(array('annonces' => $annonces));
     }
+
 }

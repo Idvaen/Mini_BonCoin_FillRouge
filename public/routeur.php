@@ -32,12 +32,12 @@ class Routeur
                         throw new Exception("Identifiant d'annonce non valide");
 
 
-                }
-                elseif ($_GET['action'] == 'annonces') {
+                } elseif ($_GET['action'] == 'home') {
 
-                        // $this->ctrlAnnonce;
+                    $this->ctrlHome->accueil();
+
                     // else
-                        // throw new Exception("Identifiant d'annonce non valide");
+                    // throw new Exception("Identifiant d'annonce non valide");
 
 
                 }

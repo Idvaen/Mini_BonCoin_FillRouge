@@ -14,10 +14,21 @@ class AnnonceController
     {
         $this->annonce = new Annonce();
     }
-    // public function accueil()
-    // {
-    //     $annonces = $this->annonce->getAnnonces();
-    //     $vue = new View("annonces");
-    //     $vue->generer(array('annonces' => $annonces));
-    // }
+    
+    // vue annonces.php
+    public function index(): void
+    {
+
+    }
+    // vue create.php + upload + insertion
+    public function create(): void
+    {
+
+    }
+
+    // vue details.php
+    public function show(?int $id): void
+    {
+
+    }
 }
