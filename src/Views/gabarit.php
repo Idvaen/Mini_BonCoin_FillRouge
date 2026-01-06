@@ -8,32 +8,44 @@
     <link rel="stylesheet" href="../public/assets/css/normalize.css" />
     <link rel="stylesheet" href="../public/assets/css/style.css" />
     <title><?= $titre ?></title>
-    <title>Gabarit</title>
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;" data-bs-theme="light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="../public/uploads/logo.jpg" alt="logo" id="logo"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" href="#"><img src="../public/uploads/logo.png" alt="logo" id="logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarText">
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                            <a class="nav-link" aria-current="page" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Annonces</a>
+                            <a class="nav-link" href="index.php?action=annonces">Annonces</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Category</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Category
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Véhicules</a></li>
+                                <li><a class="dropdown-item" href="#">Mode</a></li>
+                                <li><a class="dropdown-item" href="#">Électronique</a></li>
+                                <li><a class="dropdown-item" href="#">Autres</a></li>
+                            </ul>
                         </li>
                     </ul>
                     <span class="navbar-text">
-                        Login/Register
+                        <a href="#login.php">Login/ </a> 
+                    </span>
+                    <span class="navbar-text">
+                        <a href="#register.php"> Sign up</a> 
                     </span>
                 </div>
             </div>
@@ -46,6 +58,8 @@
             </a>
             <p>Je vous souhaite la bienvenue sur ce site.</p>
         </header>
+        <h1><?= $titre ?></h1>
+
         <div id="contenu">
             <?= $contenu ?>
         </div> <!-- #contenu -->

@@ -28,8 +28,16 @@ class View
         if (file_exists($fichier)) {
             extract($donnees);
             ob_start();
+            $dir = '../public/uploads/';
+            $uploads = scandir($dir);
             require $fichier;
-            return ob_get_clean();
+
+            $contenu = ob_get_clean();
+            // Récupère $titre défini dans le fichier view
+            if (isset($titre)) {
+                $this->titre = $titre;
+            }
+            return $contenu;
         } else {
             throw new Exception("Fichier '$fichier' introuvable");
         }

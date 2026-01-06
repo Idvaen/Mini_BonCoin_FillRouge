@@ -1,9 +1,9 @@
 <?php
 
-require "../src/Controllers/AnnonceController.php";
-require "../src/Controllers/HomeController.php";
-require "../src/Controllers/UserController.php";
-require "../src/Controllers/ControllerException.php";
+require_once "../src/Controllers/AnnonceController.php";
+require_once "../src/Controllers/HomeController.php";
+require_once "../src/Controllers/UserController.php";
+require_once "../src/Controllers/ControllerException.php";
 
 class Routeur
 {
@@ -32,14 +32,10 @@ class Routeur
                         throw new Exception("Identifiant d'annonce non valide");
 
 
-                } elseif ($_GET['action'] == 'home') {
-
+                } elseif ($_GET['action'] == 'annonces') {
+                    $this->ctrlAnnonce->index();
+                } else {
                     $this->ctrlHome->accueil();
-
-                    // else
-                    // throw new Exception("Identifiant d'annonce non valide");
-
-
                 }
             } else {
                 $this->ctrlHome->accueil();
