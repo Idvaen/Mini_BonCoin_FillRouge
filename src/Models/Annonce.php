@@ -12,4 +12,21 @@ class Annonce extends Database
         $annonces = $this->executerRequete($sql);
         return $annonces;
     }
+
+    public function createAnnonce(string $titre, string $description, float $prix, ?string $photo, int $userId): bool{
+
+        return true;
+    }
+
+    public function findAll(): array{
+        return [];
+    }
+
+    public function findById(int $id): ?array{
+        return null;
+    }
+
+    public function findByUser(int $userId): array{
+        return [];
+    }
 }
