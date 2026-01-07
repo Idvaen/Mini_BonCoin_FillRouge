@@ -34,4 +34,11 @@ class AnnonceController
         $vue = new View("details");
         $vue->generer(array('annonce' => $annonce));
     }
+
+    public function showCategory(?int $id): void
+    {
+        $annonces = $this->annonce->findByCategoryId($id);
+        $vue = new View("category");
+        $vue->generer(array('annonces' => $annonces, 'id_cat' => $id));
+    }
 }

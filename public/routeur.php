@@ -32,6 +32,12 @@ class Routeur
                         throw new Exception("Identifiant d'annonce non valide");
                 } elseif ($_GET['action'] == 'annonces') {
                     $this->ctrlAnnonce->index();
+                } elseif ($_GET['action'] == 'category') {
+                    $idCategory = intval($this->getParametre($_GET, 'id'));
+                    if ($idCategory != 0)
+                        $this->ctrlAnnonce->showCategory($idCategory);
+                    else
+                        throw new Exception("Identifiant de category non valide");
                 } else {
                     $this->ctrlHome->index();
                 }

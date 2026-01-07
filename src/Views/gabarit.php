@@ -34,10 +34,10 @@
                                 Category
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Véhicules</a></li>
-                                <li><a class="dropdown-item" href="#">Mode</a></li>
-                                <li><a class="dropdown-item" href="#">Électronique</a></li>
-                                <li><a class="dropdown-item" href="#">Autres</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=category&id=1">Véhicules</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=category&id=2">Mode</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=category&id=3">Électronique</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=category&id=4">Autres</a></li>
                             </ul>
                         </li>
                     </ul>

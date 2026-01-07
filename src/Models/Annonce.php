@@ -70,4 +70,17 @@ VALUES
         else
             throw new Exception("Aucun annonce ne correspond à l'identifiant '$userId'");
     }
+
+    public function findByCategoryId(int $categoryId){
+        $sql = "SELECT Id_ANNONCE as id, titre, description, date_public as date, prix, photo, nom_category, annonce.Id_category AS id_cat
+                FROM `annonce`
+                JOIN category
+                ON annonce.Id_category = category.Id_category
+                WHERE annonce.Id_category = ?;";
+        $annonces = $this->executerRequete($sql, array($categoryId));
+        if ($annonces->rowCount() > 0)
+            return $annonces->fetchAll();
+        else
+            throw new Exception("Aucun annonce ne correspond à l'identifiant '$categoryId'");
+    }
 }
