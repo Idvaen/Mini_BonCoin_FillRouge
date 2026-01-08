@@ -4,6 +4,11 @@
   padding: 0;
 }
 
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
 /* GABARIT */
 #logo {
   width: 75px;
@@ -18,28 +23,19 @@ h1 {
 
 a {
   text-decoration: none;
-  color: black;
+  color: #333;
+}
+
+a:hover {
+  color: #007bff;
 }
 
 #global {
   text-align: center;
   justify-content: center;
-}
-
-#gabarit_titre a {
-  width: 230px;
-}
-
-#gabarit_titre h1 {
-  font-size: 2em;
-  margin-bottom: 20px;
-}
-
-#gabarit_titre p {
-  font-size: 1.5em;
-  margin-bottom: 20px;
-  text-align: center;
-  font-weight: bold;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 #gabarit_titre {
@@ -48,6 +44,29 @@ a {
   justify-content: center;
   text-align: center;
   align-items: center;
+  padding: 20px 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  margin-bottom: 30px;
+}
+
+#gabarit_titre a {
+  width: auto;
+  max-width: 230px;
+}
+
+#gabarit_titre h1 {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  color: white;
+}
+
+#gabarit_titre p {
+  font-size: 1.2em;
+  margin-bottom: 0;
+  text-align: center;
+  font-weight: 500;
+  color: #f0f0f0;
 }
 
 #contenu {
@@ -55,45 +74,204 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px 15px;
+  flex: 1;
 }
 
 /* ANNONCE */
-#annonce a img {
-  max-width: 275px;
-}
-
 #annonce {
   text-align: center;
-}
-
-#annonce {
-  border: 1px solid black;
-  margin: 10px;
-  padding: 10px;
-  width: 23%;
-  min-width: 250px;
-  min-height: 350px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin: 0;
+  padding: 15px;
+  width: 100%;
+  max-width: 300px;
+  min-height: 380px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#annonce:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#annonce a {
+  display: block;
+}
+
+#annonce a img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+#annonce h3 {
+  font-size: 1.1em;
+  margin: 10px 0;
+  color: #333;
+}
+
+#annonce p {
+  font-size: 0.95em;
+  color: #666;
+  margin: 5px 0;
+}
+
+.annonce-prix {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #007bff;
+  margin: 10px 0;
 }
 
 /* Footer */
 #piedPrincipal {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: antiquewhite;
-  min-height: 50px;
+  min-height: 60px;
+  padding: 15px;
+  margin-top: auto;
+  text-align: center;
 }
 
+#piedPrincipal p {
+  margin: 0;
+  font-size: 0.95em;
+}
 
 /* Profil */
 .portfolio-card {
-    max-width: 340px;
-    margin: 2rem auto;
+  max-width: 340px;
+  margin: 2rem auto;
 }
 
 .portfolio-card .card-img-top {
-    height: 200px;
-    object-fit: cover;
-    text-align: center;
+  height: 200px;
+  object-fit: cover;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+/* Tablets */
+@media (max-width: 768px) {
+  #gabarit_titre h1 {
+    font-size: 1.8em;
+  }
+
+  #gabarit_titre p {
+    font-size: 1em;
+  }
+
+  #contenu {
+    gap: 15px;
+    padding: 15px 10px;
+  }
+
+  #annonce {
+    max-width: 100%;
+    min-width: 0;
+    width: calc(50% - 10px);
+  }
+
+  h1 {
+    font-size: 1.3em;
+    padding: 0 10px;
+  }
+
+  .navbar-nav {
+    padding: 10px 0;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+  #gabarit_titre {
+    padding: 15px 10px;
+    margin-bottom: 20px;
+  }
+
+  #gabarit_titre a {
+    max-width: 60px;
+  }
+
+  #gabarit_titre h1 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  #gabarit_titre p {
+    font-size: 0.9em;
+  }
+
+  #contenu {
+    gap: 12px;
+    padding: 12px 8px;
+  }
+
+  #annonce {
+    width: 100%;
+    max-width: 100%;
+    min-height: 320px;
+    padding: 12px;
+  }
+
+  #annonce a img {
+    height: 150px;
+  }
+
+  #annonce h3 {
+    font-size: 1em;
+  }
+
+  #annonce p {
+    font-size: 0.9em;
+  }
+
+  .annonce-prix {
+    font-size: 1.2em;
+  }
+
+  h1 {
+    font-size: 1.1em;
+    padding: 0 5px;
+  }
+
+  #piedPrincipal {
+    min-height: 50px;
+    padding: 10px 5px;
+  }
+
+  #piedPrincipal p {
+    font-size: 0.85em;
+  }
+
+  /* Navbar adjustments */
+  .navbar-brand img {
+    max-width: 50px;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.95em;
+  }
+
+  .navbar-text {
+    font-size: 0.9em;
+  }
+
+  .navbar-text a {
+    padding: 0 5px;
+  }
 }

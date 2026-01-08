@@ -1,4 +1,4 @@
-<?php $this->titre = "ERROR!"; ?>
+<?php $this->titre = "Non!"; ?>
 
 
 <article class="err404">
