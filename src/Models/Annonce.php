@@ -6,9 +6,18 @@ require_once '../src/Models/ModelException.php';
 class Annonce extends Database
 {
 
-    public function findAll()
+    // public function findAll()
+    // {
+    //     $sql = 'SELECT * FROM annonce ORDER BY `annonce`.`Id_ANNONCE` ASC';
+    //     $annonces = $this->executerRequete($sql);
+    //     return $annonces;
+    // }
+
+        public function findAll()
     {
-        $sql = 'SELECT * FROM annonce ORDER BY `annonce`.`Id_ANNONCE` ASC';
+        $sql = 'SELECT Id_ANNONCE as id, titre, description, date_public as date, prix, photo, nom_category, pseudo 
+                FROM `annonce` JOIN utilisateur ON utilisateur.Id_Utilisateur = annonce.Id_Utilisateur 
+                JOIN category ON category.Id_category = annonce.Id_category ORDER BY `annonce`.`Id_ANNONCE` ASC;';
         $annonces = $this->executerRequete($sql);
         return $annonces;
     }

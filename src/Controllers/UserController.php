@@ -20,7 +20,7 @@ class UserController
         $vue->generer(array());
     }
     
-    // vue login.php + traitement POST
+    // vue login.php
     public function login(): void
     {
         $vue = new View("login");

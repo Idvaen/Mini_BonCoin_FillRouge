@@ -28,27 +28,23 @@
                                 <option value="4">Autres</option>
                             </select>
                         </div>
-
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
                             <textarea class="form-control" id="description" name="description" rows="4" required
                                 placeholder="Décrivez votre article..." minlength="10"></textarea>
                             <small class="form-text text-muted">Minimum 10 caractères</small>
                         </div>
-
                         <div class="mb-3">
                             <label for="prix" class="form-label">Prix (€)</label>
                             <input type="number" class="form-control" id="prix" name="prix" step="0.01" required
                                 placeholder="0.00" min="0">
                         </div>
-
                         <div class="mb-3">
                             <label for="annonce_img" class="form-label">Photo</label>
                             <input type="file" class="form-control" id="annonce_img" name="annonce_img"
                                 accept="image/png, image/jpeg">
                             <small class="form-text text-muted">Formats acceptés: PNG, JPEG</small>
                         </div>
-
                         <button type="submit" class="btn btn-primary w-100 mb-3">
                             <i class="fas fa-check me-2"></i>Créer l'annonce
                         </button>

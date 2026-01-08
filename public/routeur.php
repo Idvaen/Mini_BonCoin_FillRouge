@@ -61,7 +61,7 @@ class Routeur
                     $titre = $this->getParametre($_POST, 'titre');
                     $description = $this->getParametre($_POST, 'description');
                     $prix = $this->getParametre($_POST, 'prix');
-                    $photo = $this->getParametre($_POST, 'annonce_img');
+                    $photo = $this->getParametreOptional($_POST, 'annonce_img');
                     $categoryId = $this->getParametre($_POST, 'category');
                     $this->ctrlAnnonce->createAnnonce(
                         $titre,
@@ -70,7 +70,6 @@ class Routeur
                         $photo,
                         $categoryId
                     );
-                    $this->ctrlAnnonce->index();
                 } else {
                     $this->ctrlHome->index();
                 }
@@ -92,6 +91,14 @@ class Routeur
             return $tableau[$nom];
         } else
             throw new Exception("Paramètre '$nom' absent");
+    }
+
+    private function getParametreOptional($tableau, $nom)
+    {
+        if (isset($tableau[$nom])) {
+            return $tableau[$nom];
+        } else
+            return null;
     }
 }
 
