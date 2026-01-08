@@ -21,7 +21,7 @@ a {
   color: black;
 }
 
-#global{
+#global {
   text-align: center;
   justify-content: center;
 }
@@ -58,11 +58,11 @@ a {
 }
 
 /* ANNONCE */
-#annonce a img{
+#annonce a img {
   max-width: 275px;
 }
 
-#annonce{
+#annonce {
   text-align: center;
 }
 
@@ -79,8 +79,21 @@ a {
 }
 
 /* Footer */
-
-#piedPrincipal{
+#piedPrincipal {
   text-align: center;
   background-color: antiquewhite;
+  min-height: 50px;
+}
+
+
+/* Profil */
+.portfolio-card {
+    max-width: 340px;
+    margin: 2rem auto;
+}
+
+.portfolio-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    text-align: center;
 }
