@@ -41,9 +41,16 @@ class Annonce extends Database
    )
 VALUES
    (?,?,?,?,?,?,?)';
-        $date = date('Y-m-d h:i:s');
-        $this->executerRequete($sql, array($titre, $description, $prix, $photo, $date, $Id_category, $Id_Utilisateur));
-        return true;
+        $date = date('Y-m-d H:i:s');
+        $stmt = $this->executerRequete($sql, array($titre, $description, $prix, $photo, $date, $Id_category, $Id_Utilisateur));
+        if ($stmt instanceof PDOStatement) {
+            return $stmt->rowCount() > 0;
+        }
+        return false;
+    }
+
+    public function lastInsertion(){
+        return $this->getBdd()->lastInsertId();
     }
 
     public function findById(int $id): ?array
