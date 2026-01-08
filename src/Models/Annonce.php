@@ -60,7 +60,7 @@ VALUES
 
     public function findByUser(int $userId): ?array
     {
-        $sql = 'SELECT Id_ANNONCE, titre, pseudo, nom_category FROM `annonce` 
+        $sql = 'SELECT Id_ANNONCE, titre, pseudo, email, nom_category FROM `annonce` 
                 JOIN utilisateur ON utilisateur.Id_Utilisateur = annonce.Id_Utilisateur 
                 JOIN category ON category.Id_category = annonce.Id_category 
                 WHERE utilisateur.Id_Utilisateur = ?;';
@@ -71,7 +71,8 @@ VALUES
             throw new Exception("Aucun annonce ne correspond à l'identifiant '$userId'");
     }
 
-    public function findByCategoryId(int $categoryId){
+    public function findByCategoryId(int $categoryId)
+    {
         $sql = "SELECT Id_ANNONCE as id, titre, description, date_public as date, prix, photo, nom_category, annonce.Id_category AS id_cat
                 FROM `annonce`
                 JOIN category

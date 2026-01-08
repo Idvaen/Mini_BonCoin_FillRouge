@@ -14,7 +14,7 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;" data-bs-theme="light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="../public/uploads/logo.png" alt="logo" id="logo"></a>
+                <a class="navbar-brand" href="index.php"><img src="../public/uploads/logo.png" alt="logo" id="logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -41,12 +41,21 @@
                             </ul>
                         </li>
                     </ul>
-                    <span class="navbar-text">
-                        <a href="#login.php">Login/ </a> 
-                    </span>
-                    <span class="navbar-text">
-                        <a href="#register.php"> Sign up</a> 
-                    </span>
+                    <?php if (isset($_POST['email'])) {
+                        echo '<span class="navbar-text">
+                                    <a href="index.php?action=profil">Profile</a>  
+                                </span>';
+                    } else {
+                        echo    '<span class="navbar-text">
+                                    <a href="index.php?action=login">Login/ </a> 
+                                </span>
+                                <span class="navbar-text">
+                                    <a href="index.php?action=register"> Sign up</a> 
+                                </span>';
+                    }
+
+                    ?>
+
                 </div>
             </div>
         </nav>

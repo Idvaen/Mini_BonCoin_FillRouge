@@ -38,7 +38,24 @@ class Routeur
                         $this->ctrlAnnonce->showCategory($idCategory);
                     else
                         throw new Exception("Identifiant de category non valide");
-                } else {
+                } elseif ($_GET['action'] == 'profil') {
+                    $email = $this->getParametre($_POST, 'email');
+                    if($this->ctrlUser->profil($email))
+                        echo "reussir";
+                    // else
+                    //     $this->ctrlUser->register();
+                } elseif ($_GET['action'] == 'login') {
+                    $this->ctrlUser->login();
+                } elseif ($_GET['action'] == 'register') {
+                    $this->ctrlUser->register();
+                } elseif ($_GET['action'] == 'user_annonces') {
+
+                } elseif ($_GET['action'] == 'inscrit') {
+                    $email = $this->getParametre($_POST, 'email');
+                    $password = $this->getParametre($_POST, 'pwd');
+                    $pseudo = $this->getParametre($_POST, 'username');
+                    $this->ctrlUser->inscrit($pseudo, $email, $password);
+                }else {
                     $this->ctrlHome->index();
                 }
             } else {

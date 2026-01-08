@@ -7,21 +7,29 @@ class User extends Database
 {
     public function createUser(string $pseudo, string $email, string $password): bool
     {
-        $sql = 'INSERT INTO UTILISATEUR (pseudo, password, email, date_inscrit) VALUES (?,?,?,?)';
+        $sql = 'INSERT INTO UTILISATEUR (pseudo, password, email, date_inscrit) VALUES (?,?,?,?);';
         $date_inscrit = date('Y-m-d h:i:s');
-        $user = $this->executerRequete($sql, array($pseudo, $password, $email, $date_inscrit));
+        $this->executerRequete($sql, array($pseudo, $password, $email, $date_inscrit));
         return true;
     }
 
-    public function findByEmail(string $email): ?array
+    public function findByEmail(string $email): array|bool|null
     {
-        // Logique pour trouver un utilisateur par email
-        return null;
+        $sql = 'SELECT * FROM `utilisateur` WHERE email = ?';
+        $user = $this->executerRequete($sql, array($email));
+        if ($user->rowCount() > 0)
+            return $user->fetch();
+        else
+            throw new Exception("Aucun utilisateur ne correspond à email - '$email'");
     }
 
     public function findById(int $id): ?array
     {
-        // Logique pour trouver un utilisateur par ID
-        return null;
+        $sql = 'SELECT * FROM `utilisateur` WHERE Id_Utilisateur = ?';
+        $user = $this->executerRequete($sql, array($id));
+        if ($user->rowCount() > 0)
+            return $user->fetch();
+        else
+            throw new Exception("Aucun utilisateur ne correspond à id - $id");
     }
 }
