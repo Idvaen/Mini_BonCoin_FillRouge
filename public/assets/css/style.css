@@ -4,6 +4,7 @@
   padding: 0;
 }
 
+/* GABARIT */
 #logo {
   width: 75px;
   height: auto;
@@ -18,6 +19,11 @@ h1 {
 a {
   text-decoration: none;
   color: black;
+}
+
+#global {
+  text-align: center;
+  justify-content: center;
 }
 
 #gabarit_titre a {
@@ -35,6 +41,7 @@ a {
   text-align: center;
   font-weight: bold;
 }
+
 #gabarit_titre {
   display: flex;
   flex-direction: column;
@@ -42,11 +49,21 @@ a {
   text-align: center;
   align-items: center;
 }
+
 #contenu {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+/* ANNONCE */
+#annonce a img {
+  max-width: 275px;
+}
+
+#annonce {
+  text-align: center;
 }
 
 #annonce {
@@ -59,4 +76,24 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+/* Footer */
+#piedPrincipal {
+  text-align: center;
+  background-color: antiquewhite;
+  min-height: 50px;
+}
+
+
+/* Profil */
+.portfolio-card {
+    max-width: 340px;
+    margin: 2rem auto;
+}
+
+.portfolio-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    text-align: center;
 }

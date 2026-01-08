@@ -65,7 +65,7 @@ VALUES
    (
       'Dima',
       'qwer123456',
-      'dima.hotmail.com',
+      'dima@hotmail.com',
       STR_TO_DATE ('25-12-2024', '%d-%m-%Y')
    ),
    (
@@ -83,13 +83,13 @@ VALUES
    (
       'Kidny',
       'rewq123456',
-      'kidny.hotmail.com',
+      'kidny@hotmail.com',
       STR_TO_DATE ('12-01-2025', '%d-%m-%Y')
    ),
    (
       'Kate',
       '123456rewq',
-      'kate.hotmail.com',
+      'kate@hotmail.com',
       STR_TO_DATE ('15-11-2020', '%d-%m-%Y')
    );
 
