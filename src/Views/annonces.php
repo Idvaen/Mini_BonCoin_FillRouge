@@ -13,6 +13,13 @@
         <p>Description: <?= $annonce['description'] ?></p>
         <p>Prix: <?= $annonce['prix'] ?>$</p>
         <p><a href="index.php?action=profil&id=<?= $annonce['Id_Utilisateur'] ?>">Auteur: <?= $annonce['pseudo'] ?></a></p>
+        <?php //Afficher le button de suppression si l'utilisateur est le propriétaire de l'annonce
+        if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $annonce['Id_Utilisateur']): ?>
+            <form method="post" action="index.php?action=deleteAnnonce&id=<?= $annonce['id'] ?>"
+                onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?');">
+                <button type="submit" class="btn btn-danger">Supprimer l'annonce</button>
+            </form>
+        <?php endif; ?>
     </article>
     <hr />
 <?php endforeach; ?>

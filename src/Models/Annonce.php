@@ -78,7 +78,7 @@ VALUES
 
     public function findByUser(int $userId): ?array
     {
-        $sql = 'SELECT Id_ANNONCE as id, titre, description, date_public as date, prix, photo, pseudo, email, nom_category FROM `annonce` 
+        $sql = 'SELECT Id_ANNONCE as id, titre, description, date_public as date, prix, photo, pseudo, email, nom_category, annonce.Id_Utilisateur FROM `annonce` 
                 JOIN utilisateur ON utilisateur.Id_Utilisateur = annonce.Id_Utilisateur 
                 JOIN category ON category.Id_category = annonce.Id_category 
                 WHERE utilisateur.Id_Utilisateur = ?;';
