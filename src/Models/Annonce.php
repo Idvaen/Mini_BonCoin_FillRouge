@@ -6,9 +6,18 @@ require_once '../src/Models/ModelException.php';
 class Annonce extends Database
 {
 
-    public function findAll()
+    // public function findAll()
+    // {
+    //     $sql = 'SELECT * FROM annonce ORDER BY `annonce`.`Id_ANNONCE` ASC';
+    //     $annonces = $this->executerRequete($sql);
+    //     return $annonces;
+    // }
+
+        public function findAll()
     {
-        $sql = 'SELECT * FROM annonce ORDER BY `annonce`.`Id_ANNONCE` ASC';
+        $sql = 'SELECT Id_ANNONCE as id, titre, description, date_public as date, prix, photo, nom_category, pseudo 
+                FROM `annonce` JOIN utilisateur ON utilisateur.Id_Utilisateur = annonce.Id_Utilisateur 
+                JOIN category ON category.Id_category = annonce.Id_category ORDER BY `annonce`.`Id_ANNONCE` ASC;';
         $annonces = $this->executerRequete($sql);
         return $annonces;
     }
@@ -41,9 +50,16 @@ class Annonce extends Database
    )
 VALUES
    (?,?,?,?,?,?,?)';
-        $date = date('Y-m-d h:i:s');
-        $this->executerRequete($sql, array($titre, $description, $prix, $photo, $date, $Id_category, $Id_Utilisateur));
-        return true;
+        $date = date('Y-m-d H:i:s');
+        $stmt = $this->executerRequete($sql, array($titre, $description, $prix, $photo, $date, $Id_category, $Id_Utilisateur));
+        if ($stmt instanceof PDOStatement) {
+            return $stmt->rowCount() > 0;
+        }
+        return false;
+    }
+
+    public function lastInsertion(){
+        return $this->getBdd()->lastInsertId();
     }
 
     public function findById(int $id): ?array

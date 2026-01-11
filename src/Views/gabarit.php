@@ -40,13 +40,19 @@
                                 <li><a class="dropdown-item" href="index.php?action=category&id=4">Autres</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.php?action=create">Create annonce</a>
+                        </li>
                     </ul>
-                    <?php if (isset($_POST['email'])) {
+                    <?php if (isset($_SESSION['user_id'])) {
                         echo '<span class="navbar-text">
-                                    <a href="index.php?action=profil">Profile</a>  
+                                    <a href="index.php?action=profil">Profile/</a>
+                                </span>
+                                <span class="navbar-text">
+                                    <a href="index.php?action=logout">Logout</a>
                                 </span>';
                     } else {
-                        echo    '<span class="navbar-text">
+                        echo '<span class="navbar-text">
                                     <a href="index.php?action=login">Login/ </a> 
                                 </span>
                                 <span class="navbar-text">
