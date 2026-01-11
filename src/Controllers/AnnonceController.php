@@ -81,4 +81,27 @@ class AnnonceController
         $vue = new View("category");
         $vue->generer(array('annonces' => $annonces, 'id_cat' => $id));
     }
+
+    public function listAnnoncesUser(int $userId): void
+    {
+        $annonces = $this->annonce->findByUser($userId);
+        $user = $this->annonce->findByUser($userId);
+        $vue = new View("listAnnoncesUser");
+        $vue->generer(array('annonces' => $annonces, 'user' => $user));
+    }
+
+    public function supprimAnnonce(int $id): void
+    {
+        if (!isset($_SESSION['user_id'])) {
+            throw new Exception("Vous devez être connecté pour supprimer une annonce");
+        }
+
+        $success = $this->annonce->deleteAnnonce($id);
+        if ($success) {
+            header("Location: index.php?action=profil&id=" . $_SESSION['user_id']);
+            exit();
+        } else {
+            throw new Exception("Échec de la suppression de l'annonce avec l'ID '$id'");
+        }
+    }
 }

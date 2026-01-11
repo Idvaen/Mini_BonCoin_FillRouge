@@ -12,7 +12,7 @@
         <time>Date: <?= $annonce['date'] ?></time>
         <p>Description: <?= $annonce['description'] ?></p>
         <p>Prix: <?= $annonce['prix'] ?>$</p>
-        <p>Auteur: <?= $annonce['pseudo'] ?></p>
+        <p><a href="index.php?action=profil&id=<?= $annonce['Id_Utilisateur'] ?>">Auteur: <?= $annonce['pseudo'] ?></a></p>
     </article>
     <hr />
 <?php endforeach; ?>
