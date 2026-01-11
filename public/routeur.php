@@ -39,6 +39,15 @@ class Routeur
                     else
                         throw new Exception("Identifiant de category non valide");
                 } elseif ($_GET['action'] == 'profil') {
+                    if (isset($_GET['id'])) {
+                        $idUser = intval($this->getParametre($_GET, 'id'));
+                        if ($idUser != 0) {
+                            $this->ctrlAnnonce->listAnnoncesUser($idUser);
+                            return;
+                        } else {
+                            throw new Exception("Identifiant d'utilisateur non valide");
+                        }
+                    }
                     $this->ctrlUser->profil();
                 } elseif ($_GET['action'] == 'login') {
                     $this->ctrlUser->login();

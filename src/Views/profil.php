@@ -19,7 +19,7 @@
                 <li class="list-group-item"><i class="fas fa-phone me-2"></i>(123) 456-7890</li>
                 <li class="list-group-item"><i class="fas fa-calendar me-2"></i>Date d'inscription: <?= $user['date_inscrit'] ?></li>
             </ul>
-            <a href="#" class="btn btn-primary">Check annonces</a>
+            <a href="index.php?action=profil&id=<?= $user['Id_Utilisateur'] ?>" class="btn btn-primary">Check annonces</a>
         </div>
     </div>
 </div>
