@@ -4,15 +4,19 @@
 foreach ($annonces ?? [] as $index => $annonce):
     ?>
     <article id="annonce">
-        <a href="index.php?action=annonce&id=<?= $annonce['Id_ANNONCE'] ?>">
+        <a href="index.php?action=annonce&id=<?= $annonce['id'] ?>">
             <h1 class="titreAnnonce"><?= $annonce['titre'] ?></h1>
             <img src="../public/uploads/<?= in_array($annonce['photo'], $uploads) ? $annonce['photo'] : 'canape_test.jfif' ?>"
                 alt="Photo de l'annonce <?= $annonce['photo'] ?>" class="imageAnnonce" />
         </a><br>
-        <time>Date: <?= $annonce['date_public'] ?></time>
+        <time>Date: <?= $annonce['date'] ?></time>
         <br>
         <p>Description: <?= $annonce['description'] ?></p>
         <p>Prix: <?= $annonce['prix'] ?>$</p>
+        <p><a href="index.php?action=profil&id=<?= $annonce['Id_Utilisateur'] ?>">Auteur:
+                <?= $annonce['pseudo'] ?>
+            </a></p>
+
     </article>
     <hr />
     <?php

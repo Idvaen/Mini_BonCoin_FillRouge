@@ -32,4 +32,11 @@ class User extends Database
         else
             throw new Exception("Aucun utilisateur ne correspond à id - $id");
     }
+
+    public function updatePassword(int $userId, string $hashedPassword): bool
+    {
+        $sql = 'UPDATE utilisateur SET password = ? WHERE Id_Utilisateur = ?';
+        $stmt = $this->executerRequete($sql, array($hashedPassword, $userId));
+        return $stmt->rowCount() > 0;
+    }
 }

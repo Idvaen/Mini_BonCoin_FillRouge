@@ -21,7 +21,7 @@ abstract class Database
         return $resultat;
     }
 
-    private function getBdd()
+    protected function getBdd()
     {
         $param_ini = parse_ini_file("../src/Param/param.ini", true);
         extract($param_ini["MiniBonCoin"]);

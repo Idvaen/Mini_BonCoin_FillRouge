@@ -24,6 +24,46 @@ class AnnonceController
     // vue create.php + upload + insertion
     public function create(): void
     {
+        if (!isset($_SESSION['user_id'])) {
+            throw new Exception("Vous devez être connecté pour créer une annonce");
+        }
+        
+        $vue = new View(action: "create");
+        $vue->generer(array('user_id' => $_SESSION['user_id']));
+    }
+
+    public function createAnnonce(
+        string $titre,
+        string $description,
+        float $prix,
+        ?string $photo,
+        int $Id_category,
+        ?int $Id_Utilisateur = null
+    ) {
+        // Utiliser l'ID de la session si pas fourni
+        if ($Id_Utilisateur === null) {
+            if (!isset($_SESSION['user_id'])) {
+                throw new Exception("Vous devez être connecté pour créer une annonce");
+            }
+            $Id_Utilisateur = $_SESSION['user_id'];
+        }
+
+        $annonce = $this->annonce->createAnnonce(
+            $titre,
+            $description,
+            $prix,
+            $photo,
+            $Id_category,
+            $Id_Utilisateur
+        );
+
+        $id = $this->annonce->lastInsertion();
+        if ($annonce) {
+            $annonce = $this->annonce->findById($id);
+            $vue = new View("details");
+            $vue->generer(array('annonce' => $annonce));
+        } else
+            throw new Exception("Nie pas reussi a cree l'annonce!");
 
     }
 
@@ -40,5 +80,28 @@ class AnnonceController
         $annonces = $this->annonce->findByCategoryId($id);
         $vue = new View("category");
         $vue->generer(array('annonces' => $annonces, 'id_cat' => $id));
+    }
+
+    public function listAnnoncesUser(int $userId): void
+    {
+        $annonces = $this->annonce->findByUser($userId);
+        $user = $this->annonce->findByUser($userId);
+        $vue = new View("listAnnoncesUser");
+        $vue->generer(array('annonces' => $annonces, 'user' => $user));
+    }
+
+    public function supprimAnnonce(int $id): void
+    {
+        if (!isset($_SESSION['user_id'])) {
+            throw new Exception("Vous devez être connecté pour supprimer une annonce");
+        }
+
+        $success = $this->annonce->deleteAnnonce($id);
+        if ($success) {
+            header("Location: index.php?action=profil&id=" . $_SESSION['user_id']);
+            exit();
+        } else {
+            throw new Exception("Échec de la suppression de l'annonce avec l'ID '$id'");
+        }
     }
 }

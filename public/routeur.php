@@ -39,23 +39,47 @@ class Routeur
                     else
                         throw new Exception("Identifiant de category non valide");
                 } elseif ($_GET['action'] == 'profil') {
-                    $email = $this->getParametre($_POST, 'email');
-                    if($this->ctrlUser->profil($email))
-                        echo "reussir";
-                    // else
-                    //     $this->ctrlUser->register();
+                    if (isset($_GET['id'])) {
+                        $idUser = intval($this->getParametre($_GET, 'id'));
+                        if ($idUser != 0) {
+                            $this->ctrlAnnonce->listAnnoncesUser($idUser);
+                            return;
+                        } else {
+                            throw new Exception("Identifiant d'utilisateur non valide");
+                        }
+                    }
+                    $this->ctrlUser->profil();
                 } elseif ($_GET['action'] == 'login') {
                     $this->ctrlUser->login();
+                } elseif ($_GET['action'] == 'connexion') {
+                    $email = $this->getParametre($_POST, 'email');
+                    $password = $this->getParametre($_POST, 'password');
+                    $this->ctrlUser->connexion($email, $password);
                 } elseif ($_GET['action'] == 'register') {
                     $this->ctrlUser->register();
-                } elseif ($_GET['action'] == 'user_annonces') {
-
                 } elseif ($_GET['action'] == 'inscrit') {
                     $email = $this->getParametre($_POST, 'email');
-                    $password = $this->getParametre($_POST, 'pwd');
+                    $password = $this->getParametre($_POST, 'password');
                     $pseudo = $this->getParametre($_POST, 'username');
                     $this->ctrlUser->inscrit($pseudo, $email, $password);
-                }else {
+                } elseif ($_GET['action'] == 'logout') {
+                    $this->ctrlUser->logout();
+                } elseif ($_GET['action'] == 'create') {
+                    $this->ctrlAnnonce->create();
+                } elseif ($_GET['action'] == 'create_annonce') {
+                    $titre = $this->getParametre($_POST, 'titre');
+                    $description = $this->getParametre($_POST, 'description');
+                    $prix = $this->getParametre($_POST, 'prix');
+                    $photo = $this->getParametreOptional($_POST, 'annonce_img');
+                    $categoryId = $this->getParametre($_POST, 'category');
+                    $this->ctrlAnnonce->createAnnonce(
+                        $titre,
+                        $description,
+                        $prix,
+                        $photo,
+                        $categoryId
+                    );
+                } else {
                     $this->ctrlHome->index();
                 }
             } else {
@@ -76,6 +100,14 @@ class Routeur
             return $tableau[$nom];
         } else
             throw new Exception("Paramètre '$nom' absent");
+    }
+
+    private function getParametreOptional($tableau, $nom)
+    {
+        if (isset($tableau[$nom])) {
+            return $tableau[$nom];
+        } else
+            return null;
     }
 }
 
