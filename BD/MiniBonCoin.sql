@@ -10,7 +10,7 @@ CREATE TABLE
    IF NOT EXISTS UTILISATEUR (
       Id_Utilisateur INT AUTO_INCREMENT,
       pseudo VARCHAR(50) NOT NULL,
-      password VARCHAR(50) NOT NULL,
+      password VARCHAR(120) NOT NULL,
       email VARCHAR(50) NOT NULL,
       date_inscrit DATETIME NOT NULL,
       PRIMARY KEY (Id_Utilisateur),
