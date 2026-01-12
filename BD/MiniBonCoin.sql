@@ -77,7 +77,7 @@ VALUES
    (
       'Jerome',
       '654321rewq',
-      'jerome.hotmail.com',
+      'jerome@hotmail.com',
       STR_TO_DATE ('6-08-2022', '%d-%m-%Y')
    ),
    (
