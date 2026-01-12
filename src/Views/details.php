@@ -11,6 +11,8 @@
     <p>Category: <?= $annonce['nom_category'] ?></p>
     <p>Description: <?= $annonce['description'] ?></p>
     <p>Prix: <?= $annonce['prix'] ?>$</p>
-    <p>Contact: <?= $annonce['pseudo'] ?></p>
+    <p><a href="index.php?action=profil&id=<?= $annonce['Id_Utilisateur'] ?>">Auteur:
+                <?= $annonce['pseudo'] ?>
+            </a></p>
 </article>
 <hr />
